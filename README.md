@@ -1,2 +1,6 @@
-# generative-story
-A Generative 2D Platformer Game with a Heart-Wrenching Story
+# Generative Story
+> This is a game developed for GAME 2500/1110 at Northeastern University
+
+## What is this game?
+
+## Who is making it?
