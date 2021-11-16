@@ -36,9 +36,9 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(check.position, 0.2f, whatIsGround);
 
-        if ((Input.GetKey("left") || Input.GetKey("right")) && !justDashed) //move left and right only if the player hasn't just dashed
+        if ((Input.GetAxisRaw("Horizontal") != 0) && !justDashed) //move left and right only if the player hasn't just dashed
         {
-            playerRB.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, playerRB.velocity.y);
+            playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, playerRB.velocity.y);
         }
 
         if (Input.GetKeyDown("z")) //jump
