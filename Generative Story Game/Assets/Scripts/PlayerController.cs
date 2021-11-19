@@ -5,10 +5,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //Variables that can be manipulated via ingredients
-    public float jumpForce, dashForce, moveSpeed;
-    public bool dash, wallJump;
-    public int maxJumps;
+    [Header("Movement Settings")]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float dashForce;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float acceleration;
 
+    [Space(10)]
+
+    [SerializeField] private bool dash;
+    [SerializeField] private bool wallJump;
+
+    [Space(10)]
+
+    [SerializeField] private int maxJumps;
+
+    [Header("Player Object Variables")]
     public Transform check; //Transform that is used to check if player is grounded
 
     LayerMask whatIsGround;
@@ -36,7 +48,18 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(check.position, 0.2f, whatIsGround);
 
-        if ((Input.GetAxisRaw("Horizontal") != 0) && !justDashed) //move left and right only if the player hasn't just dashed
+        if (isGrounded) //renew dash and reset # of jumps upon landing on ground
+        {
+            dashRenew = true;
+            numJumps = 0;
+
+            if (playerRB.velocity.x < 0)
+                playerRB.velocity = new Vector2(playerRB.velocity.x + acceleration, playerRB.velocity.y);
+            else if (playerRB.velocity.x > 0)
+                playerRB.velocity = new Vector2(playerRB.velocity.x - acceleration, playerRB.velocity.y);
+        }
+
+        if (Input.GetAxisRaw("Horizontal") != 0 && !justDashed) //move left and right only if the player hasn't just dashed
         {
             playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, playerRB.velocity.y);
         }
@@ -48,18 +71,11 @@ public class PlayerController : MonoBehaviour
                 playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
         }
 
-        
         if(Input.GetKeyDown("x") && dash && dashRenew) //player can dash if their dash is renewed and we enabled dash
         {
             dashRenew = false;
             StartCoroutine("ignoreDirection");
             playerRB.velocity = new Vector2(Mathf.Sign(playerRB.velocity.x) * dashForce, playerRB.velocity.y);
-        }
-
-        if (isGrounded) //renew dash and reset # of jumps upon landing on ground
-        {
-            dashRenew = true;
-            numJumps = 0;
         }
 
 

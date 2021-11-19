@@ -385,7 +385,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 851421967}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ca81c4afe8c8218778fbc52b617f8cf5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   jumpForce: 5
   dashForce: 8
   moveSpeed: 4
+  acceleration: 0.01
   dash: 0
   wallJump: 0
   maxJumps: 2
@@ -427,7 +428,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ca81c4afe8c8218778fbc52b617f8cf5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
