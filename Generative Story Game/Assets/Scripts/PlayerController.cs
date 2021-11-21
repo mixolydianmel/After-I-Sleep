@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     int numJumps; //Number of jumps the player has made since being grounded
     
     Rigidbody2D playerRB;
+    SpriteRenderer playerSR;
     
     bool isGrounded, justDashed, dashRenew;
     // isGrounded: is the player touching the ground
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        playerSR = GetComponent<SpriteRenderer>();
 
         whatIsGround = LayerMask.GetMask("Ground");
 
@@ -53,11 +55,22 @@ public class PlayerController : MonoBehaviour
             dashRenew = true;
             numJumps = 0;
 
-            if (playerRB.velocity.x < 0)
+            if (playerRB.velocity.x < -0.05)
                 playerRB.velocity = new Vector2(playerRB.velocity.x + acceleration, playerRB.velocity.y);
-            else if (playerRB.velocity.x > 0)
+            
+            else if (playerRB.velocity.x > 0.05)
                 playerRB.velocity = new Vector2(playerRB.velocity.x - acceleration, playerRB.velocity.y);
+            
+            else
+                playerRB.velocity = new Vector2(0, playerRB.velocity.y);
         }
+
+
+        if (playerRB.velocity.x < 0) //flip X depending on where player is moving
+            playerSR.flipX = true;
+        else if (playerRB.velocity.x > 0)
+            playerSR.flipX = false;
+
 
         if (Input.GetAxisRaw("Horizontal") != 0 && !justDashed) //move left and right only if the player hasn't just dashed
         {
@@ -75,7 +88,12 @@ public class PlayerController : MonoBehaviour
         {
             dashRenew = false;
             StartCoroutine("ignoreDirection");
-            playerRB.velocity = new Vector2(Mathf.Sign(playerRB.velocity.x) * dashForce, playerRB.velocity.y);
+
+            int dashDirection = 1;
+            if (playerSR.flipX)
+                dashDirection = -1;
+
+            playerRB.velocity = new Vector2(dashDirection * dashForce, playerRB.velocity.y);
         }
 
 
