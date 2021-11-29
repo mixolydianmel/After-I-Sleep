@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
             playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, playerRB.velocity.y);
         }
 
-        if (Input.GetKeyDown("z")) //jump
+        if (Input.GetKeyDown(KeyCode.Space)) //jump
         {
             numJumps++;
             if (numJumps < maxJumps)
