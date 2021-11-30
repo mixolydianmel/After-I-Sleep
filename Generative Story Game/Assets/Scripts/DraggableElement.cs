@@ -16,21 +16,26 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IBeginDragHa
         canvasGroup = GetComponent<CanvasGroup>();
     }
     
+    // Keeping this here for the future in case we need clickables
     public void OnPointerDown(PointerEventData evData) {
-        Debug.Log("OnPointerDown");
+        //Debug.Log("OnPointerDown");
+        return;
     }
     
+    // Called when the user starts dragging the object
     public void OnBeginDrag(PointerEventData evData) {
-        canvasGroup.blocksRaycasts = false;
+        canvasGroup.blocksRaycasts = false; // For OnDrop later in SlotElement
         canvasGroup.alpha = 0.75f;
     }
     
+    // Called when the user stops dragging the object
     public void OnEndDrag(PointerEventData evData) {
-        canvasGroup.blocksRaycasts = true;
+        canvasGroup.blocksRaycasts = true; // Needed to pick up the object again
         canvasGroup.alpha = 1f;
     }
     
+    // Called each drag frame
     public void OnDrag(PointerEventData evData) {
-        rt.anchoredPosition += evData.delta / canvas.scaleFactor;
+        rt.anchoredPosition += evData.delta / canvas.scaleFactor; // Scale by canvas size
     }
 }
