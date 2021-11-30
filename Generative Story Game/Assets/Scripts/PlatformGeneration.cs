@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlatformGeneration : MonoBehaviour
 {
-    public GameObject platform;
     public Transform currentPlatform; //set to rootPoint in editor
 
+    public int coreWorld;
     public int numberOfPlatforms;
     public float minXGaps;
     public float maxXGaps;
@@ -22,9 +22,11 @@ public class PlatformGeneration : MonoBehaviour
 
     private int posFitCounter = 0;
 
+    private string[] worlds = { "BridgeWorld", "SpaceWorld", "UnderwaterWorld" };
+
     void Start()
     {
-        allPlatforms = Resources.LoadAll("PlaceholderPlatforms"); // ! change folder later on
+        allPlatforms = Resources.LoadAll(worlds[coreWorld]); // ! change folder later on
 
         duplicatePosPlatforms = new List<int>();
         platformPositions = new List<Vector2>();

@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c932811b5d78e45b6b1b90f9564ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 292473206504048802, guid: 840a5b05dbbb62e4a8756927f9e7f64a, type: 3}
   currentPlatform: {fileID: 1558816442}
+  coreWorld: 2
   numberOfPlatforms: 40
   minXGaps: 10
   maxXGaps: 13
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 1322378732}
   - component: {fileID: 1322378731}
   m_Layer: 0
-  m_Name: Space_1
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 022aa0bcecfff774b8a36a30cc8fffc3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63d83f23880764b41bf7d6984904d78f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
