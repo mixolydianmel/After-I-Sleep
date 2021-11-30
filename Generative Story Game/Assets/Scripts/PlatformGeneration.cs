@@ -17,7 +17,7 @@ public class PlatformGeneration : MonoBehaviour
     private List<Vector2> platformPositions;
     private List<int> duplicatePosPlatforms;
     private float XLimit = 45;
-    private float YTopLimit = 30;
+    private float YTopLimit = 40;
     private float YBotLimit = -3;
 
     private int posFitCounter = 0;
