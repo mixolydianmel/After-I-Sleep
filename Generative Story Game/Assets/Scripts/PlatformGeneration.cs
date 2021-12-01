@@ -60,7 +60,7 @@ public class PlatformGeneration : MonoBehaviour
         float currentPosX = position.x;
         float currentPosY = position.y;
 
-        for (int i = 0; i < platformPositions.Count; i++)
+        for (int i = platformPositions.Count - 1; i >= 0; i--)
         {
             if (Mathf.Abs(currentPosX - platformPositions[i].x) < minXGaps && Mathf.Abs(currentPosY - platformPositions[i].y) < minYGaps)
             {
@@ -68,6 +68,7 @@ public class PlatformGeneration : MonoBehaviour
                 if (posFitCounter >= 12) // if the platform cannot find a valid space in 12 tries, just copy the position of one of the conflicting platforms
                 {
                     duplicatePosPlatforms.Add(i);
+                    platformPositions.Add(platformPositions[i]);
                     return platformPositions[i];
                 }
 
