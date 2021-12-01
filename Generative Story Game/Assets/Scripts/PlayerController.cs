@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        isGrounded = Physics2D.OverlapCircle(check.position, 0.2f, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(check.position, 0.3f, whatIsGround);
 
         if (isGrounded) //renew dash and reset # of jumps upon landing on ground
         {

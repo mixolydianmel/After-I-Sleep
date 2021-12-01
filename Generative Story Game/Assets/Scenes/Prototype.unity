@@ -410,7 +410,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ca81c4afe8c8218778fbc52b617f8cf5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -428,9 +428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 9
-  dashForce: 8
+  dashForce: 11
   moveSpeed: 6
-  acceleration: 0.01
+  acceleration: 0.04
   dash: 1
   wallJump: 0
   maxJumps: 2
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 1311856841}
   - component: {fileID: 1311856840}
   - component: {fileID: 1311856839}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 1897231168}
   - component: {fileID: 1897231167}
   - component: {fileID: 1897231166}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Wall R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1297,7 +1297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086929011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0.05561553}
+  m_LocalPosition: {x: 0.1, y: -1.57, z: 0.05561553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
