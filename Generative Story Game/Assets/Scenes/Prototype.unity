@@ -430,7 +430,7 @@ MonoBehaviour:
   jumpForce: 9
   dashForce: 11
   moveSpeed: 6
-  acceleration: 0.04
+  acceleration: 0.06
   dash: 1
   wallJump: 0
   maxJumps: 2

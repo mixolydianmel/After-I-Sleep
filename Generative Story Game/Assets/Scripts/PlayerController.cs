@@ -109,4 +109,9 @@ public class PlayerController : MonoBehaviour
         if(Mathf.Abs(playerRB.velocity.x) > moveSpeed)
             playerRB.velocity = new Vector2(Mathf.Sign(playerRB.velocity.x) * moveSpeed, playerRB.velocity.y);
     }
+
+    public bool getGrounded()
+    {
+        return isGrounded;
+    }
 }
