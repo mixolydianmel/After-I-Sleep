@@ -14,6 +14,8 @@ public class PlatformGeneration : MonoBehaviour
     public float maxYGaps; // ! implement this to be dependent on ingredients later on
 
     private object[] allPlatforms;
+    private object[] altPlatforms; // only used for Bridge World
+    private Rect bridgeWorldDarkZone; // only used for Bridge World
     private List<Vector2> platformPositions;
     private List<int> duplicatePosPlatforms;
     private float XLimit = 45;
@@ -26,7 +28,33 @@ public class PlatformGeneration : MonoBehaviour
 
     void Start()
     {
-        allPlatforms = Resources.LoadAll(worlds[coreWorld]); // ! change folder later on
+        allPlatforms = Resources.LoadAll(worlds[coreWorld]);
+
+        // special requirements for Bridge World platforms
+        if (coreWorld == 0)
+        {
+            object[] newAllPlatforms = new object[allPlatforms.Length / 2];
+            altPlatforms = new object[allPlatforms.Length / 2];
+
+            int i1 = 0;
+            int i2 = 0;
+            foreach(GameObject p in allPlatforms)
+            {
+                if (p.tag == "altPlatform")
+                {
+                    altPlatforms[i1] = p;
+                    i1++;
+                }
+                else
+                {
+                    newAllPlatforms[i2] = p;
+                    i2++;
+                }
+            }
+
+            allPlatforms = newAllPlatforms;
+            bridgeWorldDarkZone = new Rect(18, -5, 26, 48);
+        }
 
         duplicatePosPlatforms = new List<int>();
         platformPositions = new List<Vector2>();
@@ -50,6 +78,22 @@ public class PlatformGeneration : MonoBehaviour
 
         GameObject newPlat = Instantiate(platformType, transform);
         newPlat.transform.localPosition = NewPlatformPos(i);
+
+        // special instructions for Bridge World platforms
+        Canvas.ForceUpdateCanvases();
+        if (coreWorld == 0 && bridgeWorldDarkZone.Contains(newPlat.transform.localPosition))
+        {
+            int cCount = newPlat.transform.childCount;
+            for (int c = 0; c < cCount; c++)
+            {
+                Destroy(newPlat.transform.GetChild(c).gameObject);
+            }
+            for (int c = 0; c < cCount; c++)
+            {
+                Instantiate(((GameObject)altPlatforms[p]).transform.GetChild(c), newPlat.transform);
+            }
+        }
+
         newPlat.layer = 6;
 
         currentPlatform = newPlat.transform;
