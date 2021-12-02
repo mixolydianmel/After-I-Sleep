@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
         }
 
-        if(Input.GetKeyDown("x") && dash && dashRenew) //player can dash if their dash is renewed and we enabled dash
+        if(Input.GetKeyDown(KeyCode.LeftShift) && dash && dashRenew) //player can dash if their dash is renewed and we enabled dash
         {
             dashRenew = false;
             StartCoroutine("ignoreDirection");
