@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 538
+  controlID: 3708
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 539
+  controlID: 3709
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 540
+  controlID: 3686
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -525,9 +525,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.51263547, y: 20.862001, z: -0.38319495}
+    m_Target: {x: 1.5992023, y: 21.358885, z: -0.30843642}
     speed: 2
-    m_Value: {x: -0.51263547, y: 20.862001, z: -0.38319495}
+    m_Value: {x: 1.5992023, y: 21.358885, z: -0.30843642}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -701,22 +701,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Resources
+    - Assets/Music
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Resources
+  - Assets/Music
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\jane\Documents\GitHub\generative-story\Generative Story
     Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 29}
-    m_SelectedIDs: c4510000
-    m_LastClickedID: 20932
+    scrollPos: {x: 0, y: 45}
+    m_SelectedIDs: 76670000
+    m_LastClickedID: 26486
     m_ExpandedIDs: 00000000c2510000c4510000c6510000c851000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0

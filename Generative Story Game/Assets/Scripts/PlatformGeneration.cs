@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlatformGeneration : MonoBehaviour
 {
-    public Transform currentPlatform; //set to rootPoint in editor
-    public GameObject background; //set to Background in editor
+    public Transform currentPlatform; // set to rootPoint in editor
+    public GameObject background; // set to Background in editor
+    public GameObject audioSource; // set to Main Camera in editor
 
     public int coreWorld;
     public int numberOfPlatforms;
@@ -31,9 +32,14 @@ public class PlatformGeneration : MonoBehaviour
     {
         allPlatforms = Resources.LoadAll(worlds[coreWorld], typeof(GameObject));
         Object[] backgrounds = Resources.LoadAll(worlds[coreWorld], typeof(Sprite));
+        Object[] songs = Resources.LoadAll(worlds[coreWorld], typeof(AudioClip));
 
         // select correct background
         background.GetComponent<SpriteRenderer>().sprite = (Sprite) backgrounds[0];
+
+        // select correct song
+        audioSource.GetComponent<AudioSource>().clip = (AudioClip) songs[0];
+        audioSource.GetComponent<AudioSource>().Play();
 
         // special requirements for Bridge World platforms
         if (coreWorld == 0)
