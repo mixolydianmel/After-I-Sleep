@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlatformGeneration : MonoBehaviour
 {
     public Transform currentPlatform; //set to rootPoint in editor
+    public GameObject background; //set to Background in editor
 
     public int coreWorld;
     public int numberOfPlatforms;
@@ -24,11 +25,15 @@ public class PlatformGeneration : MonoBehaviour
 
     private int posFitCounter = 0;
 
-    private string[] worlds = { "BridgeWorld", "SpaceWorld", "UnderwaterWorld" };
+    private string[] worlds = { "BridgeWorld", "CloudWorld", "SpaceWorld", "UnderwaterWorld" };
 
     void Start()
     {
-        allPlatforms = Resources.LoadAll(worlds[coreWorld]);
+        allPlatforms = Resources.LoadAll(worlds[coreWorld], typeof(GameObject));
+        Object[] backgrounds = Resources.LoadAll(worlds[coreWorld], typeof(Sprite));
+
+        // select correct background
+        background.GetComponent<SpriteRenderer>().sprite = (Sprite) backgrounds[0];
 
         // special requirements for Bridge World platforms
         if (coreWorld == 0)
