@@ -375,7 +375,7 @@ MonoBehaviour:
   currentPlatform: {fileID: 1558816442}
   background: {fileID: 1322378730}
   audioSource: {fileID: 1200137518}
-  coreWorld: 3
+  coreWorld: 1
   numberOfPlatforms: 40
   minXGaps: 10
   maxXGaps: 13
