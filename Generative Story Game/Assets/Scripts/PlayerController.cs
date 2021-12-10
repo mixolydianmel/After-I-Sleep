@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        isGrounded = Physics2D.OverlapCircle(check.position, 0.2f, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(check.position, 0.3f, whatIsGround);
 
         if (isGrounded) //renew dash and reset # of jumps upon landing on ground
         {
@@ -77,14 +77,14 @@ public class PlayerController : MonoBehaviour
             playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, playerRB.velocity.y);
         }
 
-        if (Input.GetKeyDown("z")) //jump
+        if (Input.GetKeyDown(KeyCode.Space)) //jump
         {
             numJumps++;
             if (numJumps < maxJumps)
                 playerRB.velocity = new Vector2(playerRB.velocity.x, jumpForce);
         }
 
-        if(Input.GetKeyDown("x") && dash && dashRenew) //player can dash if their dash is renewed and we enabled dash
+        if(Input.GetKeyDown(KeyCode.LeftShift) && dash && dashRenew) //player can dash if their dash is renewed and we enabled dash
         {
             dashRenew = false;
             StartCoroutine("ignoreDirection");
