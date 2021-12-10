@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     
     Rigidbody2D playerRB;
     SpriteRenderer playerSR;
+    Animator playerAnim;
     
     bool isGrounded, justDashed, dashRenew;
     // isGrounded: is the player touching the ground
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         playerSR = GetComponent<SpriteRenderer>();
+        playerAnim = GetComponent<Animator>();
 
         whatIsGround = LayerMask.GetMask("Ground");
 
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        isGrounded = Physics2D.OverlapCircle(check.position, 0.3f, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(check.position, 0.3f, whatIsGround);       
 
         if (isGrounded) //renew dash and reset # of jumps upon landing on ground
         {
@@ -90,12 +92,19 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("ignoreDirection");
 
             int dashDirection = 1;
+
             if (playerSR.flipX)
                 dashDirection = -1;
 
             playerRB.velocity = new Vector2(dashDirection * dashForce, playerRB.velocity.y);
         }
 
+        if(Mathf.Abs(playerRB.velocity.x) >= 0.05f && isGrounded) //animation stuff
+            playerAnim.Play("Mochi-Run");
+        else if(Mathf.Abs(playerRB.velocity.x) < 0.05f && isGrounded)
+            playerAnim.Play("Mochi-Idle");
+        else if (!isGrounded)
+            playerAnim.Play("Mochi-Jump");
 
     }
 
@@ -108,5 +117,10 @@ public class PlayerController : MonoBehaviour
 
         if(Mathf.Abs(playerRB.velocity.x) > moveSpeed)
             playerRB.velocity = new Vector2(Mathf.Sign(playerRB.velocity.x) * moveSpeed, playerRB.velocity.y);
+    }
+
+    public bool getGrounded()
+    {
+        return isGrounded;
     }
 }
