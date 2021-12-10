@@ -30,6 +30,8 @@ public class PlatformGeneration : MonoBehaviour
 
     void Start()
     {
+        maxYGaps += Mathf.Lerp(-2, 2, GameManager.Instance.GetNextValue());
+
         allPlatforms = Resources.LoadAll(worlds[coreWorld], typeof(GameObject));
         Object[] backgrounds = Resources.LoadAll(worlds[coreWorld], typeof(Sprite));
         Object[] songs = Resources.LoadAll(worlds[coreWorld], typeof(AudioClip));

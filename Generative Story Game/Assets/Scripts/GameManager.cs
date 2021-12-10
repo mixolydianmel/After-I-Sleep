@@ -23,10 +23,6 @@ public class GameManager : MonoBehaviour {
         values = new List<float>();
         currentValueIndex = int.MaxValue - 1;
     }
-
-    void Update() {
-        Debug.Log(GetNextValue());
-    }
     
     public float GetNextValue() {
         currentValueIndex++;
@@ -42,6 +38,11 @@ public class GameManager : MonoBehaviour {
     
     public void RemoveValue(float v) {
         values.Remove(v);
+    }
+
+    public void CreationScreen() {
+        values = new List<float>();
+        SceneManager.LoadScene("Creation");
     }
 
     public void GenerateWorld() {

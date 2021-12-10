@@ -7,7 +7,8 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 {
     [Header("Item Data")]
     [SerializeField] private Canvas canvas;
-    [SerializeField] private float value;
+    
+    private float value;
 
     private CanvasGroup canvasGroup;
     private RectTransform rt;
@@ -15,6 +16,7 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     private void Start() {
         rt = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        value = Random.Range(0.01f, 0.99f);
     }
     
     // Keeping this here for the future in case we need clickables
