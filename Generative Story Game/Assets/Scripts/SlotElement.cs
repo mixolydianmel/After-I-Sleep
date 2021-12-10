@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class SlotElement : MonoBehaviour, IDropHandler
 {
     private RectTransform rt;
+    private float value;
 
     void Start() {
         rt = GetComponent<RectTransform>();
@@ -16,6 +17,7 @@ public class SlotElement : MonoBehaviour, IDropHandler
         // If the pointer is dragging something when it is dropped
         if (evData.pointerDrag != null) {
             evData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = rt.anchoredPosition;
+            value = evData.pointerDrag.GetComponent<DraggableElement>().GetValue();
         }
     }
 }

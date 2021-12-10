@@ -7,6 +7,7 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 {
     [Header("Item Data")]
     [SerializeField] private Canvas canvas;
+    [SerializeField] private float value;
 
     private CanvasGroup canvasGroup;
     private RectTransform rt;
@@ -37,5 +38,10 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     // Called each drag frame
     public void OnDrag(PointerEventData evData) {
         rt.anchoredPosition += evData.delta / canvas.scaleFactor; // Scale by canvas size
+    }
+    
+    // Retrieves the "value" field
+    public float GetValue() {
+        return value;
     }
 }
