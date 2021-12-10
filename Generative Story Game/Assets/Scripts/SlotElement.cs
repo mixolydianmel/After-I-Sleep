@@ -20,4 +20,8 @@ public class SlotElement : MonoBehaviour, IDropHandler
             value = evData.pointerDrag.GetComponent<DraggableElement>().GetValue();
         }
     }
+
+    public float GetValue() {
+        return value;
+    }
 }

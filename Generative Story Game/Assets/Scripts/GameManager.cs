@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     // Singleton
@@ -22,8 +23,12 @@ public class GameManager : MonoBehaviour {
         values = new List<float>();
         currentValueIndex = int.MaxValue - 1;
     }
+
+    void Update() {
+        Debug.Log(GetNextValue());
+    }
     
-    float GetNextValue() {
+    public float GetNextValue() {
         currentValueIndex++;
         if (currentValueIndex >= values.Count) {
             currentValueIndex = 0;
@@ -31,11 +36,16 @@ public class GameManager : MonoBehaviour {
         return values[currentValueIndex];
     }
     
-    void AddValue(float v) {
+    public void AddValue(float v) {
         values.Add(v);
     }
     
-    void RemoveValue(float v) {
+    public void RemoveValue(float v) {
         values.Remove(v);
+    }
+
+    public void GenerateWorld() {
+        GameObject.Find("Slots").GetComponent<SlotsManager>().ReportValues();
+        SceneManager.LoadScene("Prototype");
     }
 }
