@@ -43,8 +43,6 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        Debug.Log(onScreen);
-
         if (player.GetComponent<PlayerController>().getGrounded()) { //zoom out/in camera to fit platforms while player is grounded
             if (onScreen < 3)
                 Camera.main.orthographicSize += 0.02f;

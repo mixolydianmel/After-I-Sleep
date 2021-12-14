@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     // Singleton
     [HideInInspector] public static GameManager Instance;
+    [HideInInspector] public static int day;
 
     private static List<float> values;
     private static int currentValueIndex;
@@ -38,6 +39,12 @@ public class GameManager : MonoBehaviour {
     
     public void RemoveValue(float v) {
         values.Remove(v);
+    }
+
+    public void TitleScreen()
+    {
+        values = new List<float>();
+        SceneManager.LoadScene("Title Screen");
     }
 
     public void CreationScreen() {

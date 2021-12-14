@@ -7,13 +7,14 @@ public class PlatformGeneration : MonoBehaviour
     public Transform currentPlatform; // set to rootPoint in editor
     public GameObject background; // set to Background in editor
     public GameObject audioSource; // set to Main Camera in editor
+    public GameObject mikaPrefab; // set to Mika (prefab) in editor
 
-    public int coreWorld;
+    public int coreWorld; // v ingredient-value dependent variables
     public int numberOfPlatforms;
     public float minXGaps;
     public float maxXGaps;
+    public float maxYGaps; // ^ ingredient-value dependent variables
     public float minYGaps;
-    public float maxYGaps; // ! implement this to be dependent on ingredients later on
 
     private object[] allPlatforms;
     private object[] altPlatforms; // only used for Bridge World
@@ -30,7 +31,11 @@ public class PlatformGeneration : MonoBehaviour
 
     void Start()
     {
-        maxYGaps += Mathf.Lerp(-2, 2, GameManager.Instance.GetNextValue());
+        coreWorld = Mathf.FloorToInt(4f * GameManager.Instance.GetNextValue());
+        numberOfPlatforms = 10 + Mathf.RoundToInt(80f * GameManager.Instance.GetNextValue());
+        minXGaps += Mathf.RoundToInt(Mathf.Lerp(-2, 2, GameManager.Instance.GetNextValue()));
+        maxXGaps += Mathf.RoundToInt(Mathf.Lerp(-2, 2, GameManager.Instance.GetNextValue()));
+        maxYGaps += Mathf.RoundToInt(Mathf.Lerp(-2, 2, GameManager.Instance.GetNextValue()));
 
         allPlatforms = Resources.LoadAll(worlds[coreWorld], typeof(GameObject));
         Object[] backgrounds = Resources.LoadAll(worlds[coreWorld], typeof(Sprite));
@@ -110,6 +115,12 @@ public class PlatformGeneration : MonoBehaviour
         newPlat.layer = 6;
 
         currentPlatform = newPlat.transform;
+
+        if (i == numberOfPlatforms - 1) // final platform placed
+        {
+            GameObject mika = Instantiate(mikaPrefab, currentPlatform);
+            mika.transform.localPosition = new Vector2(-2, 2);
+        }
     }
 
     Vector2 PerfectPosition(Vector2 position, int posIndex)
