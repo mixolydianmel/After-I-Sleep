@@ -25,6 +25,8 @@ public class Dialogue : MonoBehaviour
         string readableFile = file.text;
         currentBook = readableFile.Split('\n');
 
+        GameObject.Find("Player").GetComponent<PlayerController>().moveSpeed = 0;
+
         TypeThis(0);
     }
 
@@ -33,16 +35,6 @@ public class Dialogue : MonoBehaviour
         index = newIndex;
         message = currentBook[index];
         typeTime = 0.05f;
-
-        /*for (int i = 55; i < message.Length; i--)
-        {
-            if (message[i] == ' ')
-            {
-                message = message.Remove(i, 1);
-                message = message.Insert(i, "\n");
-                i += 55;
-            }
-        }*/
 
         if (typing == false)
         {

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float dashForce;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] private float acceleration;
 
     [Space(10)]
