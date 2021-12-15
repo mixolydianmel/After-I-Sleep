@@ -1,4 +1,3 @@
-The first levels dialogue can go here (there can be multiple slides of dialogue per level)
-just please separate each slide of dialogue with a new line like this!
-this would be the third slide.
-thanks!
+I remember when you got your first bicycle. 
+We rode around our block countless times, racing to see who was faster... 
+Of course, I let you win most of the time!
